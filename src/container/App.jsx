@@ -1,9 +1,10 @@
-import "./App.css";
+import React from "react";
+import CategoryContainer from "../components/CategoryContainer/CategoryContainer";
 
 function App() {
   return (
     <div className="App">
-      <h1>This is the App</h1>
+      <CategoryContainer/>
     </div>
   );
 }
