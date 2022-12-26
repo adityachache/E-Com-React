@@ -5,7 +5,7 @@ import CategoryCard from "../CategoryCard/CategoryCard";
 function CategoryContainer() {
   return (
     <>
-      <div className="p-4 ">
+      <div className="pl-10 pr-10">
         <div className="grid md:grid-cols-3 sm:grid-cols-1 ">
           {categoryData.map((item) => {
             return (

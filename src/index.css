@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 .card {
   height: 350px;
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+}
+
+.navbar-link:hover {
+  color: lightseagreen ;
+}
+
