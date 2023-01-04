@@ -14,11 +14,11 @@ function Navigation() {
           borderRadius: "0px",
         }}
       >
-        <Navbar.Brand>
+        <div>
           <Link to={"/"}>
             <img src={crown} className="ml-10 h-6 sm:h-9" alt="Brand Logo" />
           </Link>
-        </Navbar.Brand>
+        </div>
         <Navbar.Toggle />
         <Navbar.Collapse
           style={{
