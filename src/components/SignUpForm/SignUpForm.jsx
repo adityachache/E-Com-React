@@ -1,4 +1,4 @@
-import { Alert, Button, Label, TextInput } from "flowbite-react";
+import { Button } from "flowbite-react";
 import React, { useState } from "react";
 import {
   createUserAuthWithEmailAndPassword,
@@ -40,7 +40,9 @@ function SignUpForm() {
       setFormField(defaultFormFields);
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
-        alert("email is already in use.");
+        alert("Email already in use. Try loggin in instead");
+      } else if (err.code === "auth/network-request-failed") {
+        alert("login failed due to connection issue. Please try again");
       } else {
         console.log(err);
       }
@@ -49,8 +51,10 @@ function SignUpForm() {
 
   return (
     <div>
-      <h2>Don't have an account?</h2>
-      <p>Sign up with Email and Password</p>
+      <h2 className="my-2 font-semibold text-4xl">Don't have an account?</h2>
+      <p className="mb-6 font-medium text-lg">
+        Sign up with an email and password
+      </p>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <FormInput
           label={"Display Name"}
@@ -87,7 +91,9 @@ function SignUpForm() {
           onChange={handleChange}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" color={"dark"}>
+          Sign Up
+        </Button>
       </form>
     </div>
   );

@@ -8,10 +8,9 @@ function Navigation() {
     <>
       <Navbar
         fluid={true}
-        rounded={true}
+        border={true}
         style={{
           padding: "20px",
-          borderRadius: "0px",
         }}
       >
         <div>
@@ -28,7 +27,7 @@ function Navigation() {
           <Link to={"/shop"}>
             <p className="navbar-link">Shop</p>
           </Link>
-          <Link to={"/sign-in"}>
+          <Link to={"/auth"}>
             <p className="navbar-link">Sign In</p>
           </Link>
         </Navbar.Collapse>
