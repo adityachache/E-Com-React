@@ -1,10 +1,11 @@
 import { Button } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   createUserAuthWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../FormInput/FormInput";
+import { UserContext } from "../../contexts/userContext";
 
 const defaultFormFields = {
   displayName: "",
@@ -16,6 +17,7 @@ const defaultFormFields = {
 function SignUpForm() {
   const [formField, setFormField] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formField;
+  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,12 +31,13 @@ function SignUpForm() {
       return;
     }
     try {
-      const response = await createUserAuthWithEmailAndPassword(
+      const { user } = await createUserAuthWithEmailAndPassword(
         email,
         password
       );
       //   console.log(response)
-      await createUserDocumentFromAuth(response.user, {
+      setCurrentUser(user);
+      await createUserDocumentFromAuth(user, {
         displayName,
       });
       setFormField(defaultFormFields);
@@ -92,7 +95,7 @@ function SignUpForm() {
         />
 
         <Button type="submit" color={"dark"}>
-          Sign Up
+          Sign&nbsp;Up
         </Button>
       </form>
     </div>

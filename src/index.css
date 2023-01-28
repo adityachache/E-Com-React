@@ -15,8 +15,13 @@ body {
   background-color: white;
 }
 
+.navbar-link {
+  cursor: pointer;
+  font-size: 16px;
+}
+
 .navbar-link:hover {
-  color: lightseagreen ;
+  color: rgb(23, 103, 207) ;
 }
 
 .auth-container {
