@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryContainer from "../../components/CategoryContainer/CategoryContainer";
+import CategoryContainer from "../../components/category-container/category-container";
 
 function HomePage() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 
-import SignUpForm from "../../components/SignUpForm/SignUpForm";
-import SignInForm from "../../components/SignInForm/SignInForm";
+import SignUpForm from "../../components/sign-up-form/sign-up-form";
+import SignInForm from "../../components/sign-in-form/sign-in-form";
 
 function Authentication() {
   return (

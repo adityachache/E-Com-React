@@ -1,6 +1,6 @@
 import React from "react";
 import { categoryData } from "../../data";
-import CategoryCard from "../CategoryCard/CategoryCard";
+import CategoryCard from "../category-card/category-card";
 
 function CategoryContainer() {
   return (

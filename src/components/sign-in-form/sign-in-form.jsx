@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
-import FormInput from "../FormInput/FormInput";
+import React, { useState } from "react";
+import FormInput from "../form-input/form-input";
 import { Button } from "flowbite-react";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
   signInUserAuthWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
-import { UserContext } from "../../contexts/userContext";
 
 const defaultFormFields = {
   email: "",
@@ -16,7 +15,6 @@ const defaultFormFields = {
 function SignInForm() {
   const [formField, setFormField] = useState(defaultFormFields);
   const { email, password } = formField;
-  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,11 +25,7 @@ function SignInForm() {
     event.preventDefault();
 
     try {
-      const { user } = await signInUserAuthWithEmailAndPassword(
-        email,
-        password
-      );
-      setCurrentUser(user);
+      await signInUserAuthWithEmailAndPassword(email, password);
       setFormField(defaultFormFields);
     } catch (error) {
       // console.log(error)
