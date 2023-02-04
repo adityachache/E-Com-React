@@ -3,7 +3,6 @@ import FormInput from "../form-input/form-input";
 import { Button } from "flowbite-react";
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInUserAuthWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 
@@ -21,12 +20,16 @@ function SignInForm() {
     setFormField({ ...formField, [name]: value });
   };
 
+  const resetFormfield = () => {
+    setFormField(defaultFormFields);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       await signInUserAuthWithEmailAndPassword(email, password);
-      setFormField(defaultFormFields);
+      resetFormfield();
     } catch (error) {
       // console.log(error)
       switch (error.code) {
@@ -46,8 +49,7 @@ function SignInForm() {
   };
 
   const logInUser = async () => {
-    const response = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(response.user);
+    await signInWithGooglePopup();
   };
 
   return (

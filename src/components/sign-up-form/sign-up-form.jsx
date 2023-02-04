@@ -22,6 +22,10 @@ function SignUpForm() {
     setFormField({ ...formField, [name]: value });
   };
 
+  const resetFormfield = () => {
+    setFormField(defaultFormFields);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -37,7 +41,7 @@ function SignUpForm() {
       await createUserDocumentFromAuth(user, {
         displayName,
       });
-      setFormField(defaultFormFields);
+      resetFormfield();
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
         alert("Email already in use. Try loggin in instead");
