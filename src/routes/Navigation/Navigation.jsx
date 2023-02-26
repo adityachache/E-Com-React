@@ -4,11 +4,15 @@ import { Navbar } from "flowbite-react";
 import crown from "../../assets/crown.svg";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { UserContext } from "../../contexts/user.context";
+import CartIcon from "../../components/cart-icon/cart-icon";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown";
+import { CartContext } from "../../contexts/cart.context";
 
 function Navigation() {
   const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
+  const { toggleCart } = useContext(CartContext);
+  // console.log(currentUser);
 
   return (
     <>
@@ -44,7 +48,11 @@ function Navigation() {
               <p className="navbar-link">Sign In</p>
             </Navbar.Link>
           )}
+          <Navbar.Link>
+            <CartIcon />
+          </Navbar.Link>
         </Navbar.Collapse>
+        {toggleCart && <CartDropdown />}
       </Navbar>
       <Outlet />
     </>
