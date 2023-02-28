@@ -1,16 +1,22 @@
 import { Button } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
+import CartItem from "../cart-item/cart-item";
+import { CartContext } from "../../contexts/cart.context";
 
 function CartDropdown() {
+  const { cartItems } = useContext(CartContext);
   return (
     <>
       <div className="cart-dropdown-container">
         <div className="cart-items">
-          <div className=" mt-auto mx-auto">
-            <Button color={"dark"} pill={true} outline={true}>
-              GO TO CHECKOUT
-            </Button>
-          </div>
+          {cartItems.map((item) => {
+            return <CartItem key={item.id} cartItem={item} />;
+          })}
+        </div>
+        <div className=" mt-auto mx-auto">
+          <Button color={"dark"} pill={true} outline={true}>
+            GO TO CHECKOUT
+          </Button>
         </div>
       </div>
     </>

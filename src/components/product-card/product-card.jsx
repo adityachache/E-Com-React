@@ -1,9 +1,12 @@
-import { Card } from "flowbite-react";
-import React from "react";
-import { Link } from "react-router-dom";
+import { Button, Card } from "flowbite-react";
+import React, { useContext } from "react";
+import { CartContext } from "../../contexts/cart.context";
 
 function ProductCard({ product }) {
   const { name, price, imageUrl } = product;
+  const { addToCart } = useContext(CartContext);
+
+  const addItemToCart = () => addToCart(product);
   return (
     <>
       <div className="max-w-md">
@@ -22,12 +25,13 @@ function ProductCard({ product }) {
               {"$" + price}
             </span>
             <div className="mt-4 flex ">
-              <Link
-                to={""}
-                className="inline-flex items-center rounded-lg bg-blue-700 py-2 px-4 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              <Button
+                gradientDuoTone="cyanToBlue"
+                pill={true}
+                onClick={addItemToCart}
               >
                 Add to cart
-              </Link>
+              </Button>
             </div>
           </div>
         </Card>
