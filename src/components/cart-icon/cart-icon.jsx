@@ -3,7 +3,12 @@ import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 import { CartContext } from "../../contexts/cart.context";
 
 function CartIcon() {
-  const { toggleCart, setToggleCart } = useContext(CartContext);
+  const { toggleCart, setToggleCart, cartCount } = useContext(CartContext);
+
+  // let initial = 0;
+  // cartItems.forEach((element) => {
+  //   initial += element.quantity;
+  // });
 
   const toggle = () => {
     setToggleCart(!toggleCart);
@@ -13,7 +18,7 @@ function CartIcon() {
     <>
       <div className="cart-icon-container " onClick={toggle}>
         <ShoppingIcon className="shopping-icon" />
-        <span className="item-count">0</span>
+        <span className="item-count">{cartCount}</span>
       </div>
     </>
   );

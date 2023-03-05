@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const addItems = (cartItems, productToAdd) => {
   const productToAddExists = cartItems.find((item) => {
@@ -21,11 +21,20 @@ export const CartContext = createContext();
 export const CartProvider = (props) => {
   const [toggleCart, setToggleCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const newCartCount = cartItems.reduce((total, cartItems) => {
+      return total + cartItems.quantity;
+    }, 0);
+    setCartCount(newCartCount);
+  }, [cartItems]);
 
   const addToCart = (productToAdd) => {
     setCartItems(addItems(cartItems, productToAdd));
   };
-  const value = { toggleCart, setToggleCart, addToCart, cartItems };
+
+  const value = { toggleCart, setToggleCart, addToCart, cartItems, cartCount };
 
   return (
     <>

@@ -13,7 +13,7 @@ function CartDropdown() {
             return <CartItem key={item.id} cartItem={item} />;
           })}
         </div>
-        <div className=" mt-auto mx-auto">
+        <div className="mt-6 mx-auto">
           <Button color={"dark"} pill={true} outline={true}>
             GO TO CHECKOUT
           </Button>

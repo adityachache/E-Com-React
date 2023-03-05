@@ -1,11 +1,16 @@
 import React from "react";
 
 const CartItem = ({ cartItem }) => {
-  const { name, quantity } = cartItem;
+  const { name, quantity, imageUrl, price } = cartItem;
   return (
-    <div>
-      <h2>{name}</h2>
-      <span>{quantity}</span>
+    <div className="cart-item-container">
+      <img src={imageUrl} alt={name} className=" w-1/3" />
+      <div className="item-details">
+        <span className=" text-sm">{name}</span>
+        <span className="price text-sm">
+          {quantity} x {price}$
+        </span>
+      </div>
     </div>
   );
 };
